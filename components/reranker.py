@@ -343,6 +343,8 @@ class GridSearchReranker(Reranker):
         param_space = (np.array(p) for p in itertools.combinations(np.arange(0, 3.01, 0.01), self.feature_num))
 
         for param in param_space:
+            print('Test param: ', param)
+            
             score = self.compute_rerank_performance(examples, decode_results, fast_mode=True, evaluator=evaluator, param=param)
             if score > best_score:
                 print('New param=%s, score=%.4f' % (param, score), file=sys.stderr)
