@@ -1,4 +1,5 @@
 #!/bin/bash
+
 source activate py3torch3cuda9
 
 test_file="data/conala/test.var_str_sep.bin"
@@ -10,6 +11,5 @@ python exp.py \
     --beam_size 15 \
     --test_file ${test_file} \
     --evaluator conala_evaluator \
-    --save_decode_to decodes/conala/$(basename $1).test.decode \
+    --save_decode_to decodes/conala/$(basename $1).dev.decode \
     --decode_max_time_step 100
-

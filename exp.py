@@ -221,6 +221,7 @@ def train(args):
 
 
 def train_rerank_feature(args):
+    print('============> train_rerank_feature')
     train_set = Dataset.from_bin_file(args.train_file)
     dev_set = Dataset.from_bin_file(args.dev_file)
     vocab = pickle.load(open(args.vocab, 'rb'))
@@ -664,6 +665,8 @@ def interactive_mode(args):
 
 
 def train_reranker_and_test(args):
+    print('============> train_reranker_and_test')
+    
     print('load dataset [test %s], [dev %s]' % (args.test_file, args.dev_file), file=sys.stderr)
     test_set = Dataset.from_bin_file(args.test_file)
     dev_set = Dataset.from_bin_file(args.dev_file)
