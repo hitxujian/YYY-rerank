@@ -331,6 +331,9 @@ class GridSearchReranker(Reranker):
 
     def get_rerank_score(self, hyp, param):
         feat_vals = np.array(list(hyp.rerank_feature_values.values()))
+
+        print("param.shape: ", param.shape)
+        print("feat_vals.shape: ", feat_vals.shape)
         score = hyp.score + np.dot(param, feat_vals)
         # score = np.dot(param, feat_vals)
 
