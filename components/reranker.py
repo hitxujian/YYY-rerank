@@ -342,7 +342,7 @@ class GridSearchReranker(Reranker):
         best_param = np.zeros(self.feature_num)
 
         param_space = (np.array(p) for p in itertools.combinations(np.arange(0, 3.01, 0.01), self.feature_num))
-        length = len([for e in param_space])
+        length = len([x for e in param_space])
 
         for param in tqdm(param_space, total=length):
         # for param in param_space:
