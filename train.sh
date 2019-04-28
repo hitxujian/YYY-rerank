@@ -28,7 +28,7 @@ python -u exp.py \
     --batch_size 10 \
     --evaluator conala_evaluator \
     --asdl_file asdl/lang/py3/py3_asdl.simplified.txt \
-    --transition_system python3 \
+    --lang python3 \
     --train_file ${train_file} \
     --dev_file ${dev_file} \
     --vocab ${vocab} \

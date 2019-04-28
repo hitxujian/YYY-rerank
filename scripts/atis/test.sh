@@ -7,5 +7,5 @@ python exp.py \
     --load_model $1 \
     --beam_size 5 \
     --test_file data/atis/test.bin \
-    --save_decode_to decodes/atis/${model_name}.test.decode \
+    --save_decode_to decodes/atis/${model_name}.decode \
     --decode_max_time_step 110
