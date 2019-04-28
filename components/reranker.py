@@ -20,6 +20,7 @@ from components.dataset import Example
 
 import xgboost as xgb
 from sklearn import preprocessing
+from tqdm import tqdm
 
 
 # shared across processes for multi-processed reranking
@@ -341,10 +342,12 @@ class GridSearchReranker(Reranker):
         best_param = np.zeros(self.feature_num)
 
         param_space = (np.array(p) for p in itertools.combinations(np.arange(0, 3.01, 0.01), self.feature_num))
+        length = len([for e in param_space])
 
-        for param in param_space:
-            print('Test param: ', param)
-            
+        for param in tqdm(param_space, total=length):
+        # for param in param_space:
+            # print('Test param: ', param)
+
             score = self.compute_rerank_performance(examples, decode_results, fast_mode=True, evaluator=evaluator, param=param)
             if score > best_score:
                 print('New param=%s, score=%.4f' % (param, score), file=sys.stderr)

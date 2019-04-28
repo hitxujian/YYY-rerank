@@ -21,5 +21,6 @@ python exp.py \
     --lang python3 \
     --features reconstructor $1 normalized_parser_score \
     --dev_decode_file $2 \
-    --test_decode_file $3
+    --test_decode_file $3 \
+    --num_workers 4
 
