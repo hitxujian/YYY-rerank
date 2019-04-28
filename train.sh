@@ -47,7 +47,7 @@ python -u exp.py \
     --lr ${lr} \
     --lr_decay ${lr_decay} \
     --lr_decay_after_epoch ${lr_decay_after_epoch} \
-    --max_epoch 50 \
+    --max_epoch 5 \
     --beam_size ${beam_size} \
     --log_every 50 \
     --save_to saved_models/conala/${model_name}
