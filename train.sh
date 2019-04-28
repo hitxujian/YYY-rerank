@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e
 
-#source activate py3torch3cuda9
+source activate py3torch3cuda9
 
 seed=${1:-0}
 vocab="data/conala/vocab.var_str_sep.src_freq3.code_freq3.bin"
 train_file="data/conala/train.var_str_sep.bin"
 dev_file="data/conala/dev.var_str_sep.bin"
-test_file="data/conala/test.var_str_sep.bin"
 dropout=0.3
 hidden_size=256
 embed_size=128
@@ -17,7 +16,7 @@ type_embed_size=64
 ptrnet_hidden_dim=32
 lr=0.001
 lr_decay=0.5
-beam_size=25
+beam_size=15
 lstm='lstm'  # lstm
 lr_decay_after_epoch=15
 model_name=model.sup.conala.${lstm}.hidden${hidden_size}.embed${embed_size}.action${action_embed_size}.field${field_embed_size}.type${type_embed_size}.dr${dropout}.lr${lr}.lr_de${lr_decay}.lr_da${lr_decay_after_epoch}.beam${beam_size}.$(basename ${vocab}).$(basename ${train_file}).glorot.par_state.seed${seed}
@@ -32,7 +31,6 @@ python -u exp.py \
     --transition_system python3 \
     --train_file ${train_file} \
     --dev_file ${dev_file} \
-    --test_file ${test_file} \
     --vocab ${vocab} \
     --lstm ${lstm} \
     --no_parent_field_type_embed \
@@ -52,8 +50,6 @@ python -u exp.py \
     --max_epoch 50 \
     --beam_size ${beam_size} \
     --log_every 50 \
-    --result_path results/${model_name} \
     --save_to saved_models/conala/${model_name}
-
 
 . scripts/conala/test.sh saved_models/conala/${model_name}.bin
