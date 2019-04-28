@@ -8,5 +8,5 @@ python exp.py \
     --load_model $1 \
     --beam_size 15 \
     --test_file ${test_file} \
-    --save_decode_to decodes/django/$(basename $1).decode \
+    --save_decode_to decodes/django/$(basename $1).test.decode \
     --decode_max_time_step 100

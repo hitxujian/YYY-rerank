@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 source activate py3torch3cuda9
 
@@ -26,11 +27,14 @@ python -u exp.py \
     --cuda \
     --seed ${seed} \
     --mode train \
-    --lang wikisql \
     --batch_size 64 \
+    --parser wikisql_parser \
     --asdl_file asdl/lang/sql/sql_asdl.txt \
+    --transition_system sql \
+    --evaluator wikisql_evaluator \
     --train_file data/wikisql/${train_file} \
     --dev_file data/wikisql/dev.bin \
+    --sql_db_file data/wikisql/dev.db \
     --vocab data/wikisql/${vocab} \
     --glove_embed_path data/contrib/glove.6B.100d.txt \
     --lstm ${lstm} \
@@ -50,6 +54,7 @@ python -u exp.py \
     --lr_decay ${lr_decay} \
     --glorot_init \
     --beam_size ${beam_size} \
+    --eval_top_pred_only \
     --decode_max_time_step 50 \
     --log_every 10 \
     --save_to saved_models/wikisql/${model_name} 2>>logs/wikisql/${model_name}.log

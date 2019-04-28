@@ -1,11 +1,6 @@
 # coding=utf-8
 
-from evaluation import *
-from model.wikisql.dataset import *
-from model.wikisql.parser import *
-
-from asdl.lang.sql.lib.query import Query
-from asdl.lang.sql.utils import detokenize_query
+from datasets.wikisql.utils import detokenize_query
 import json, argparse
 import pickle
 
